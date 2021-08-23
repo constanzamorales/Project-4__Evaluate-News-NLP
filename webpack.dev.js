@@ -45,5 +45,8 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
     ]
 }

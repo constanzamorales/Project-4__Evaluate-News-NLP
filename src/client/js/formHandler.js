@@ -11,36 +11,69 @@ function handleSubmit(event) {
     let userURL = document.getElementById('name').value
     Client.checkForName(userURL)
 
-    getEvaluation(baseURL, apiKey, userURL)
-    .then (function (data) {
-        const textData = status.msg;
-        postData('/addEntry', {
-            status: textData
+    (function (data) {
+        const textData = res.subjectivity;
+        postData('/addData', {
+            subjectivity: textData
         })
         .then(() => {
             updateUI();
         });
     });
 
-    const getEvaluation = async (baseURL, apiKey, userURL) => {
-        const res = await fetch(`${baseURL}${apiKey}&url=${userURL}`);
-        // Try calling the API
-        try {
-            const textEvaluation = await res.json();
-            console.log(textEvaluation);
-            return textEvaluation;
-        } catch (error) {
-            console.log('There was an error in the GET data function', error);
-        }
-    } 
-
-
+    /*
     console.log("::: Form Submitted :::")
     fetch('http://localhost:8081/test')
     .then(res => res.json())
     .then(function(res) {
         document.getElementById('results').innerHTML = res.message
     })
+    */
 }
+
+/*
+const getEvaluation = async (baseURL, apiKey, userURL) => {
+    const res = await fetch(`${baseURL}${apiKey}&of=json&url=${userURL}`);
+    // Try calling the API
+    try {
+        const textEvaluation = await res.json();
+        console.log(textEvaluation);
+        return textEvaluation;
+    } catch (error) {
+        console.log('There was an error in the GET data function', error);
+    }
+}
+*/
+
+const postData = async (url, data) => {
+    const res = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json', 
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(data)
+    });
+    try {
+        const newData = await res.json();
+        console.log(newData);
+        return newData;
+    } catch (error) {
+        console.log('Error in the POST data function', error);
+    }
+}
+
+
+/* Updating UI */
+const updateUI = async (result) => {
+    try {
+        const allData = result;
+        document.getElementById('results').innerHTML = allData.subjectivity;
+    } catch (error) {
+        console.log('There was an error updating the UI!', error);
+    }
+}
+
 
 export { handleSubmit }

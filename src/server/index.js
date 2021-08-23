@@ -1,8 +1,8 @@
 var path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
 const mockAPIResponse = require('./mockAPI.js');
 const cors = require('cors');
-const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -10,8 +10,16 @@ const apiKey = process.env.API_KEY;
 console.log(`Your API key is ${process.env.API_KEY}`);
 
 const app = express()
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+/*
 app.user(express.urlencoded({ extended: false }));
 app.user(express.json());
+*/
 
 // Use cors for cross origin allowance
 app.use(cors());
@@ -33,13 +41,11 @@ app.get('/test', function (req, res) {
 });
 
 // Post Route
-// Array to hold data
-const data = [];
-// Create post() with a url path and a callback function
 app.post('/addData', addData);
-const addData = (req, res) => {
-    console.log(req.body);
-    projectData = req.body;
-    res.send(projectData);
+function addData(req, res) {
+    const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&url=${req.body.formText}&lang=en`);
+    const data = await response.json();
+    console.log(data);
+    res.send(data);
 }
 
