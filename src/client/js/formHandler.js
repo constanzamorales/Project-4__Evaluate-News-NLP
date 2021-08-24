@@ -1,6 +1,3 @@
-const apiKey = process.env.API_KEY;
-const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
-
 // Event listener to add function to existing HTML DOM element
 //document.getElementById('submit').addEventListener('click', handleSubmit);
 
@@ -13,7 +10,7 @@ function handleSubmit(event) {
 
     // If the URL is valid, post the data
     if (Client.checkUrl(userURL)) {
-        fetch('http://localhost:8081/test', {
+        fetch('http://localhost:8081/addData', {
             method: 'POST',
             credentials: 'same-origin',
             headers: {
