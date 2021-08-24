@@ -21,11 +21,12 @@ function handleSubmit(event) {
         .then(res => res.json())
         // Update UI
         .then(function(res) {
-            document.getElementById('results').innerHTML = res.message
+            console.log(res);
+            document.getElementById('results').innerHTML = res.subjectivity;
         })
     } else {
-        alert('Please enter a valid URL (containing https:// or http://. Thanks!');
-    }
+        alert('Please enter a valid URL (containing https:// or http://). Thanks!');
+    };
 }
 
 export { handleSubmit }
