@@ -9,7 +9,7 @@ dotenv.config();
 const apiKey = process.env.API_KEY;
 console.log(`Your API key is ${process.env.API_KEY}`);
 
-const app = express()
+const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,15 +37,20 @@ app.get('/', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    res.send(mockAPIResponse);
 });
 
 // Post Route
 app.post('/addData', addData);
-function addData(req, res) {
-    const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&url=${req.body.formText}&lang=en`);
-    const data = await response.json();
-    console.log(data);
-    res.send(data);
+async function addData(req, res) {
+    const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&of=json&url=${req.body.userURL}`);
+    try {
+        const data = await response.json();
+        console.log(data);
+        res.send(data);
+    }
+    catch (error) {
+        console.log('An error ocurred: ', error);
+    }
 }
 
