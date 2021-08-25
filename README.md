@@ -18,3 +18,4 @@ This project uses [MeaningCloud API](https://www.meaningcloud.com/) to evaluate 
 ### Using the site
 
 Once everything is setup you should be able to enter a valid URL in the input and get the results (agreement, subjectivity, irony and analysis confidence).
+![Screenshot of the site](https://user-images.githubusercontent.com/64158242/130864181-506e1b88-99f8-4b9c-8a19-a6f3595870d3.png)
