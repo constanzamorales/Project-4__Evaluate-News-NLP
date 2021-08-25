@@ -2,13 +2,38 @@ import { checkUrl } from "../src/client/js/urlChecker";
 
 // The describe() function takes two arguments - a string description, and a test suite as a callback function.  
 // A test suite may contain one or more related tests    
-describe("Testing the submit functionality", () => {
-    // The test() function has two arguments - a string description, and an actual test as a callback function.  
-    test("Testing the handleSubmit() function", () => {
-        // Define the input for the function, if any, in the form of variables/array
-        // Define the expected output, if any, in the form of variables/array
-        // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
-        // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-        expect(checkUrl).toBeDefined(true);
+describe("Testing the URL checker with HTTP", () => {
+    // Tests a link with "https://"
+    test("Test should return true", () => {
+        const userInput = "https://www.bbc.co.uk/"
+        expect(checkUrl(userInput)).toBe(true);
+    })
+    // Tests a link with "http://"
+    test("Test should return true", () => {
+        const userInput = "http://www.bbc.co.uk/"
+        expect(checkUrl(userInput)).toBe(true);
+    })
+});
+
+describe("Testing the URL checker without HTTP", () => {
+    // Tests a link starting with "http:" and no "//"
+    test("Test should return false", () => {
+        const userInput = "http:www.bbc.co.uk/"
+        expect(checkUrl(userInput)).toBe(false);
+    })
+    // Tests a link with " "
+    test("Test should return false", () => {
+        const userInput = " www.bbc.co.uk/"
+        expect(checkUrl(userInput)).toBe(false);
+    })
+    // Tests a link starting with only "www"
+    test("Test should return false", () => {
+        const userInput = "www.bbc.co.uk/"
+        expect(checkUrl(userInput)).toBe(false);
+    })
+    // Tests a link without any protocol or www
+    test("Test should return false", () => {
+        const userInput = "bbc.co.uk/"
+        expect(checkUrl(userInput)).toBe(false);
     })
 });
