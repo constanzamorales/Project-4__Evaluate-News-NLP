@@ -2,36 +2,43 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+        <title>News Evaluation with NPL</title>
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
+            <h1>News Evaluation with NPL</h1>
+            <h2>Powered by <a href="https://www.meaningcloud.com/">MeaningCloud</a></h2>
         </header>
 
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" placeholder="Name">
-                    <input id="submit" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                    <h4>Enter a URL to analyse a text</h4>
+                    <input id="name" type="text" name="input" value="" placeholder="Enter a URL">
+                    <input class="submit-btn" id="submit" type="submit" name="" value="Evaluate" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             </section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <h3>Results:</h3>
+                <div id="results">
+                    <ul>
+                        <li>Agreement: <p id="agreement">No results</p></li>
+                        <li>Subjectivity:<p id="subjectivity">No results</p></li>
+                        <li>Irony: <p id="irony">No results</p></li>
+                        <li>Analysis confidence: <p id="confidence">No results</p></li>
+                    </ul>
+                </div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Coded by Constanza Morales</p>
         </footer>
 
     </body>

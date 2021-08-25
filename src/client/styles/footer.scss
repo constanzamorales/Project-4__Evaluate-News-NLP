@@ -1,0 +1,9 @@
+$font-stack: 'Rubik', Helvetica, sans-serif;
+$primary-color: #000;
+
+footer {
+	text-align: center;
+	color: $primary-color;
+	font-family: $font-stack;
+	padding: 30px;
+}

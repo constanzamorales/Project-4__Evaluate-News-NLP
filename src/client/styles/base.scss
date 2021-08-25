@@ -1,7 +1,29 @@
+$font-stack: 'Rubik', Helvetica, sans-serif;
+$background-color: #fff;
+$primary-color: #000;
+$secondary-color: #16dfad;
+
 body {
-	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	font-family: $font-stack;
+	font-size: 1em;
+}
+
+h2 {
+	font-size: 0.5em;
+	padding: 10px;
+}
+
+li {
+	padding: 10px 0px 10px 0px;
+	font-weight: 700;
+	display: flex;
+}
+
+li p {
+	padding-left: 10px;
+	font-weight: 400;
 }
 
 main {
@@ -9,6 +31,6 @@ main {
 }
 
 section {
-	max-width: 800px;
+	max-width: 600px;
 	margin: 50px auto;
 }

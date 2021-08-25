@@ -22,7 +22,10 @@ function handleSubmit(event) {
         // Update UI
         .then(function(res) {
             console.log(res);
-            document.getElementById('results').innerHTML = res.subjectivity;
+            document.getElementById('agreement').textContent = `${res.agreement} ✅`;
+            document.getElementById('subjectivity').textContent = `${res.subjectivity} ✅`;
+            document.getElementById('irony').textContent = `${res.irony} ✅`;
+            document.getElementById('confidence').textContent = `${res.confidence}/100 ✅`;
         })
     } else {
         alert('Please enter a valid URL (containing https:// or http://). Thanks!');
