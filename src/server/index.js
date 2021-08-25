@@ -13,13 +13,13 @@ const apiKey = process.env.API_KEY;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Use cors for cross origin allowance
+app.use(cors());
 /*
 app.user(express.urlencoded({ extended: false }));
 app.user(express.json());
 */
 
-// Use cors for cross origin allowance
-app.use(cors());
 // Initialize in the dist folder
 app.use(express.static('dist'))
 
