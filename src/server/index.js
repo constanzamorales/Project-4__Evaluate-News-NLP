@@ -4,10 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const fetch = require("node-fetch");
-const apiKey = process.env.API_KEY;
 const app = express();
 
 dotenv.config();
+const apiKey = process.env.API_KEY;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
