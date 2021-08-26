@@ -1,11 +1,14 @@
 const loader = document.getElementById('loading');
 const noResultText = document.getElementById('noResults');
+// Input is clear when website loads
+document.getElementById('url').value = "";
 
 function handleSubmit(event) {
     event.preventDefault();
     results.classList.remove('show');
-    // Display loader when request starts.
+    // Hide the text "No results"
     noResultText.classList.add('hide');
+    // Display loader when request starts.
     loader.classList.add('show');
 
     // Select the value in the input
