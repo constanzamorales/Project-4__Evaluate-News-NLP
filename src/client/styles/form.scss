@@ -1,20 +1,22 @@
 $secondary-color: #16dfad;
-$hover-color: #02221a;
+$hover-color: #fff;
 $border-radius: 8px;
+$white-border: 1px solid #fff;
 
 form {
 	border: 1px solid #545454;
 	border-radius: $border-radius;
-	padding: 20px;
+	padding: 30px;
+	box-shadow: 10px 10px #ffdd1a;
 }
 
 input {
 	padding: 5px 20px;
 	width: 100%;
 	line-height: 16px;
-	margin: 10px 0;
+	margin: 20px 0;
 	border-radius: $border-radius;
-	border: 1px solid #000;
+	border: $white-border;
 	padding: 10px 0px 10px 10px;
 }
 
@@ -45,13 +47,13 @@ h3 {
 	border: 5px solid #16dfad;
 	border-top: 6px solid #000;
 	border-radius: 100%;
-	margin: auto;
-	visibility: hidden;
+	margin: 30px auto;
+	display: none;
 	animation: spin 1s infinite linear;
 }
 
-#loading.display {
-	visibility: visible;
+#loading.show {
+	display: block;
 }
 
 @keyframes spin {
@@ -61,4 +63,29 @@ h3 {
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+.results {
+	border: $white-border;
+	border-radius: $border-radius;
+	padding: 10px 0px 40px 20px;
+	box-shadow: 10px 10px #ffdd1a;
+}
+
+#results {
+	display: none;
+	padding: 20px 0px 20px 20px;
+}
+#results.show {
+	display: block;
+}
+
+.no-results {
+	text-align: center;
+	padding-top: 50px;
+	display: block;
+}
+
+.no-results.hide {
+	display: none;
 }

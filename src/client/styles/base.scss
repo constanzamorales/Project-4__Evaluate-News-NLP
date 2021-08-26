@@ -1,10 +1,12 @@
 $font-stack: 'Rubik', Helvetica, sans-serif;
-$background-color: #fff;
-$primary-color: #000;
+$background-color: #000;
+$primary-color: #fff;
 $secondary-color: #16dfad;
 
 body {
+	color: $primary-color;
 	flex-direction: column;
+	background: $background-color;
 	min-height: 100vh;
 	font-family: $font-stack;
 	font-size: 1em;
