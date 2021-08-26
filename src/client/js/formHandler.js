@@ -1,13 +1,12 @@
-// Event listener to add function to existing HTML DOM element
-//document.getElementById('submit').addEventListener('click', handleSubmit);
+const loader = document.getElementById('loading');
 
 function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    // Display loader when request starts.
+    loader.classList.add('display');
 
     // Select the value in the input
     let userURL = document.getElementById('name').value
-
-
     // If the URL is valid, post the data
     if (Client.checkUrl(userURL)) {
         fetch('http://localhost:8081/addData', {
@@ -22,6 +21,9 @@ function handleSubmit(event) {
         // Update UI
         .then(function(res) {
             console.log(res);
+            // Remove loader once data is fetched.
+            loader.classList.remove('display');
+            // Update UI
             document.getElementById('agreement').textContent = `${res.agreement} ✅`;
             document.getElementById('subjectivity').textContent = `${res.subjectivity} ✅`;
             document.getElementById('irony').textContent = `${res.irony} ✅`;
