@@ -1,7 +1,9 @@
 const loader = document.getElementById('loading');
 const noResultText = document.getElementById('noResults');
 // Input is clear when website loads
-document.getElementById('url').value = "";
+window.onload = function () {
+    document.getElementById('url').value = "";
+}
 
 function handleSubmit(event) {
     event.preventDefault();
